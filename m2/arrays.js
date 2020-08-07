@@ -37,7 +37,7 @@ console.log(gests); // ["Kiwi", "Poly", "Ajax", "Alex"]
 
 const visiters = ["Mango", "Ajax", "Poly"];
 
-for (let i = 0; i < clients.length; i += 1) {
+for (let i = 0; i < visiters.length; i += 1) {
   console.log("Logging visiters: ", visiters[i]);
 }
 
@@ -164,6 +164,7 @@ console.log(b); // ['Mango', 'Poly', 'Ajax']
 
 // split(s) — позволяет превратить строку в массив, разбив ее по разделителю s.
 // join(s) — делает в точности противоположное split. Он берет массив и склеивает его в строку, используя s как разделитель.
+
 // split
 const message = "Welcome to Bahamas!";
 // Разбивает строку по разделителю, в данном случае это пробел
@@ -190,7 +191,6 @@ console.log(customer.join("-")); // "Mango-Poly-Ajax"
 // console.log(clients.indexOf('Monkong')); // -1
 
 // Выносим варианты в массив
-// Выносим варианты в массив
 const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
 const fruit = "cherry";
 if (redFruits.includes(fruit)) {
@@ -198,7 +198,8 @@ if (redFruits.includes(fruit)) {
 }
 
 // push() — позволяет добавить один или несколько элементов в конец массива.
-// pop() — удаляет элемент из конца массива и возвращает удаленный элемент. Если массив пуст, метод возвращает undefined.
+// pop() — удаляет элемент из конца массива и возвращает удаленный элемент.
+// Если массив пуст, метод возвращает undefined.
 // Создаем пустой массив
 const stack = [];
 
