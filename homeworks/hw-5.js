@@ -1,21 +1,27 @@
 "use strict";
 // 1
-const Account = function (login, email) {
-  this.login = login;
-  this.email = email;
+const Account = function (obj) {
+  this.login = obj.login;
+  this.email = obj.email;
 };
 Account.prototype.getInfo = function () {
   console.log(`Login: ${this.login}, Email: ${this.email}`);
 };
 console.log(Account.prototype.getInfo); // function
-const mango = new Account("Mangozedog", "mango@dog.woof");
+const mango = new Account({
+  login: "Mangozedog",
+  email: "mango@dog.woof",
+});
 mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
-const poly = new Account("Poly", "poly@mail.com");
+const poly = new Account({
+  login: "Poly",
+  email: "poly@mail.com",
+});
 poly.getInfo(); // Login: Poly, Email: poly@mail.com
 
 // 2
 class User {
-  constructor(name, age, followers) {
+  constructor({ name, age, followers }) {
     this.name = name;
     this.age = age;
     this.followers = followers;
@@ -26,9 +32,17 @@ class User {
     );
   }
 }
-const elena = new User("Elena", 2, 20);
+const elena = new User({
+  name: "Mango",
+  age: 2,
+  followers: 20,
+});
 elena.getInfo(); // User Elena is 2 years old and has 20 followers
-const aleksa = new User("Aleksa", 3, 17);
+const aleksa = new User({
+  name: "Poly",
+  age: 3,
+  followers: 17,
+});
 aleksa.getInfo(); // User Aleksa is 3 years old and has 17 followers
 
 // 3
