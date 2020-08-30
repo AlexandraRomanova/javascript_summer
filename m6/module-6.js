@@ -102,6 +102,7 @@ numbers1.forEach((num) => console.log(num));
 numbers1.forEach((num, idx) => console.log(`index ${idx}, value ${num}`));
 
 // 2. Array.prototype.map()
+// Возвращает новый масси из изменённых элементов исходного массива
 // Используется для транформации массива. Применяет callback-функцию к
 // каждому элементу исходного массива, результат работы callback-функции
 // записывает в новый массив, который и будет результатом выполнения метода.
@@ -272,13 +273,76 @@ const tags = tweets1.reduce((allTags, tweet) => {
   return allTags;
 }, []);
 console.log(tags);
+//  ["js", "nodejs", "html", "css", "html", "js", "nodejs", "css", "react", "js", "nodejs", "react"]
 // Наверное сбор тегов не одиночная операция, поэтому напишем функцию
 // для сбора тегов из коллекции
-const getTags = (tweets) =>
-  tweets.reduce((allTags, tweet) => {
+const getTags = (tweets1) =>
+  tweets1.reduce((allTags, tweet) => {
     allTags.push(...tweet.tags);
     return allTags;
   }, []);
 console.log(getTags(tweets1));
 
-// Скопировать последний пункт 7
+// Если в объекте-аккумуляторе acc нету своего свойства с ключем tag,
+// то создаем его и записывает ему значение 0.
+// В противном случае увеличиваем значение на 1.
+const getTagStats = (acc, tag) => {
+  if (!acc.hasOwnProperty(tag)) {
+    acc[tag] = 0;
+  }
+  acc[tag] += 1;
+  return acc;
+};
+// Начальное значение аккумулятора это пустой объект {}
+const countTags = (tags) => tags.reduce(getTagStats, {});
+const tagCount = countTags(tags);
+console.log(tagCount);
+
+// 7. Array.prototype.sort() reverse() - в обратном порядке для слов
+// Позволяет сортировать элементы массива на месте. Помимо возврата
+// отсортированного массива метод sort также отсортирует массив, на котором
+// он был вызван. По умолчанию метод sort сортирует, преобразуя элементы к строке.
+// Перебирает
+// Изменяет
+// Возвращает коллекцию
+const numbers6 = [2, 1, 4, 3, 5];
+// Отсортирует по возрастанию
+console.log("Before sort: ", numbers6); // [2, 1, 4, 3, 5]
+console.log("After sort: ", numbers6.sort()); // [1, 2, 3, 4, 5]
+
+const clients = ["Mango", "Ajax", "Poly", "Chelsey"];
+// Отсортирует по алфавиту
+console.log("Before sort: ", clients); // ["Mango", "Ajax", "Poly", "Chelsey"]
+console.log("After sort: ", clients.sort()); // ["Ajax", "Chelsey", "Mango", "Poly"]
+
+// Для указания своего порядка сортировки в метод arr.sort(fn) нужно
+// передать функцию fn с двумя параметрами, которая сравнивает их.
+// Внутренний алгоритм функции сортировки умеет сортировать любые массивы.
+// Но для этого ему нужно знать, как их сравнивать. Эту роль и выполняет fn.
+// Положительное значение, если a > b
+// Отрицательное значение, если a < b
+// Если равны – можно 0, но вообще не важно, что возвращать, если их
+// взаимный порядок не имеет значения.
+const usersx = [
+  { name: "Mango", daysActive: 15 },
+  { name: "Poly", daysActive: 4 },
+  { name: "Ajax", daysActive: 27 },
+  { name: "Chelsey", daysActive: 2 },
+];
+const sortByActiveDays = (a, b) => a.daysActive - b.daysActive;
+console.log(usersx.sort(sortByActiveDays));
+
+// Цепочки методов массива
+// Функциональные методы массива можно группировать в цепочки. Каждый
+// следующий метод будет выполняться на результате работы предыдущего.
+const numbersz = [1, 2, 3, 4, 5, 6, 7, 8];
+/*
+ * Фильтруем четные числа. Далее, на результате метода filter,
+ * вызываем map и множим на 2. После чего на результате
+ * метода map вызываем reverse.
+ */
+const result = numbersz
+  .filter((x) => x % 2 === 0)
+  .map((y) => y * 2)
+  .reverse();
+console.log(result);

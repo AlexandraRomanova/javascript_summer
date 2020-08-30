@@ -72,7 +72,6 @@ console.log(
 
 // 5
 const checkForSpam = function (message) {
-  // твой код
   message = message.toLowerCase();
   if (message.includes("spam") || message.includes("sale")) return true;
 
